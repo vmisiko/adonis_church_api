@@ -36,6 +36,29 @@ class MemberController {
     const members = await Member.query().paginate(page, limit)
     return response.send(members)
   }
+
+  async showMember({ params, request, response, view }) {
+    try {
+    const member = await Member.find(params.id)
+    if (!member) {
+      return response.send({
+        status: 'error',
+        message: "Member not registered",
+      })
+    }
+
+    return response.send({
+      status: 'success',
+      message: '',
+      data: member
+    })
+    } catch(err) {
+      return response.status(err.status).send({
+        status: 'error',
+        message: err.message,
+      })
+    }
+  }
   
   async edit ({ params, request, response, view }) {
   }

@@ -23,3 +23,5 @@ Route.post('/register-attendance', 'AttendanceController.store')
 Route.get('/attendance', 'AttendanceController.show')
 Route.post('/register-member', 'MemberController.store')
 Route.get('/members', 'MemberController.show')
+
+Route.get('/search-member/:id', 'MemberController.showMember')
