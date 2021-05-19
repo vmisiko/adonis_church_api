@@ -6,6 +6,10 @@ const Env = use('Env')
 /** @type {import('@adonisjs/ignitor/src/Helpers')} */
 const Helpers = use('Helpers')
 
+const URL = require("url-parse");
+const PROD_PG_DB = new URL(Env.get("PG_DATABASE_URL"));
+
+
 module.exports = {
   /*
   |--------------------------------------------------------------------------
