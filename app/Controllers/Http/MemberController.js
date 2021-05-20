@@ -15,11 +15,11 @@ class MemberController {
     const data = request.all()
     try {
       const member = await Member.create(data)
-      const data = {
+      const  data2= {
         member_id: member.id,
         temperature: member.temperature,
       }
-      const attendance = await Attendance.create(data)
+      const attendance = await Attendance.create(data2)
       return response.send({
         status: 'success',
         message: 'Member saved successfully.',
