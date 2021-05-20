@@ -16,8 +16,8 @@ class MemberController {
     try {
       const member = await Member.create(data)
       const data = {
-        member_id: modelInstance.id,
-        temperature: modelInstance.temperature,
+        member_id: member.id,
+        temperature: member.temperature,
       }
       const attendance = await Attendance.create(data)
       return response.send({
