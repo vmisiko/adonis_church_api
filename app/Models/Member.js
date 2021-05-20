@@ -7,7 +7,7 @@ class Member extends Model {
     static boot() {
         super.boot()
     
-        this.addHook('afterCreate', 'MemberHook.registerAttendance')
+        // this.addHook('afterCreate', 'MemberHook.registerAttendance')
     
       }
     attendance () {
