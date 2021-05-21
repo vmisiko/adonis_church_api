@@ -1,6 +1,6 @@
 'use strict'
 const Member = use('App/Models/Member')
-const  Attendance = use('App/models/Attendance')
+// const  Attendance = use('App/models/Attendance')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -15,11 +15,11 @@ class MemberController {
     const data = request.all()
     try {
       const member = await Member.create(data)
-      const  data2= {
-        member_id: member.id,
-        temperature: member.temperature,
-      }
-      const attendance = await Attendance.create(data2)
+      // const  data2= {
+      //   member_id: member.id,
+      //   temperature: member.temperature,
+      // }
+      // const attendance = await Attendance.create(data2)
       return response.send({
         status: 'success',
         message: 'Member saved successfully.',
