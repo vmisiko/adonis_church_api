@@ -2,7 +2,7 @@
 
 const User = require("../User")
 
-const  Attendance = use('App/models/Attendance')
+const  Attendance = use('App/Models/Attendance')
 
 const MemberHook = exports = module.exports = {}
 
