@@ -110,9 +110,9 @@ class MemberController {
   async uploadCheck({ request, response }) {
     const member = await Member.findBy('uploaded', true)
     if (member) {
-      return true
-    } else  {
       return false
+    } else  {
+      return true
     }
   }
   
