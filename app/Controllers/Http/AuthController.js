@@ -5,7 +5,7 @@ const User = use('App/Models/User')
 class AuthController {
     async register ({ request, response }) {
         const data = request.all();
-        
+        data.role = 'user'
         try {
           const user = await User.create(data)
           console.log(user)
@@ -28,8 +28,15 @@ class AuthController {
     async login ({ request, auth, response}) {
         const email = request.input("email")
         const password = request.input("password")
-        const token = await auth.withRefreshToken().attempt(email, password)
+        const token = await auth.withRefreshToken().attempt(email, password, true)
         return token;
+    }
+    async edit ({ request, response, params }) {
+      const data = request.all();
+      const user = await User.find(params.id)
+      user.merge(data)
+      await user.save()
+      return user
     }
 }
 

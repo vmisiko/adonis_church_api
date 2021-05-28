@@ -14,6 +14,7 @@ class MemberSchema extends Schema {
       table.string('phone')
       table.string('residence')
       table.string('temperature')
+      table.boolean('uploaded')
       table.timestamps()
     })
   }

@@ -28,7 +28,8 @@
     "@adonisjs/shield": "^1.0.8",
     "pg": "^8.6.0",
     "sqlite3": "^5.0.2",
-    "url-parse": "^1.5.1"
+    "url-parse": "^1.5.1",
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {},
   "autoload": {
