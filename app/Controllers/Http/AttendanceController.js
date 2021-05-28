@@ -1,4 +1,6 @@
 'use strict'
+const { duration } = require("moment");
+const  moment = require("moment");
 const Attendance = use('App/Models/Attendance')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
@@ -11,8 +13,22 @@ const Attendance = use('App/Models/Attendance')
 class AttendanceController {
  
   async store ({ request, response }) {
-    const data = request.all();
     try {
+      const data = request.all();
+      const attendanceCheck = await Attendance.query().where('member_id', data.member_id ).first()
+      if (attendanceCheck) {
+        const date = new Date;
+        const currentTime = moment(date);
+        const savedDate =  moment.utc(attendanceCheck.created_at).local().format();
+        const duration = moment.duration(currentTime.diff(savedDate))
+        if ( duration.asDays() < 1 ) {
+          return response.send({
+            status: 'error',
+            message: 'Member has been marked as Attended!',
+          })
+        }
+      }
+
       const attendance = await Attendance.create(data)
       return response.send({
         status: 'success',
@@ -72,6 +88,9 @@ class AttendanceController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
+    const attendance = await Attendance.findBy('member_id', params.id)
+    await attendance.delete()
+    return "Attendace deleted"
   }
 }
 
