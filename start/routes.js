@@ -20,11 +20,14 @@ Route.on('/').render('welcome')
 Route.post('/auth/register', 'AuthController.register')
 Route.post('/auth/login', 'AuthController.login')
 Route.put('/update/user/:id', 'AuthController.edit')
+Route.get('/users', 'AuthController.show'),
+
 Route.post('/register-attendance', 'AttendanceController.store')
 Route.get('/attendance', 'AttendanceController.show')
+Route.delete('/delete-attendance/:id', 'AttendanceController.destroy')
+
 Route.post('/register-member', 'MemberController.store')
 Route.get('/members', 'MemberController.show')
 Route.post('/file/upload', 'MemberController.storeBulk')
 Route.get('/search-member/:id', 'MemberController.showMember')
 Route.get('/upload-check', 'MemberController.uploadCheck')
-Route.delete('/delete-attendance/:id', 'AttendanceController.destroy')
